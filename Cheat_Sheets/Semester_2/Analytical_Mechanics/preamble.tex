@@ -1,0 +1,69 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian]{babel}
+
+% Поиск в PDF
+\usepackage{cmap}
+
+\usepackage[a4paper,top=0.5cm,bottom=0.5cm,left=1cm,right=0.5cm,marginparwidth=0cm]{geometry}
+
+% Красная строка для первого предложения в разделе
+\usepackage{indentfirst}
+
+% Равные промежутки между словами и предложениями
+\frenchspacing
+
+\usepackage{amsmath,amssymb,mathtools,amsthm}
+\usepackage{icomma}
+
+\usepackage{graphicx}
+
+% Стиль нумерации формул
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+% Отображать номера только тех формул, на которые есть ссылка
+\mathtoolsset{showonlyrefs=true}
+
+% Более привычные греческие буквы
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\kappa}{\varkappa}
+
+% Знаки сравнения с наклонёнными чёрточками
+\renewcommand{\le}{\leqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\geq}{\geqslant}
+
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\ds}{\displaystyle}
+
+% Обозначения числовых множеств
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\re}{Re}
+
+% Команда для переноса во встраиваемых в строку формулах. Взята из книги «Набор и вёрстка в системе
+% LaTeX» С.М. Львовского.
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\usepackage[inline]{enumitem}
+
+\sloppy
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+
+\newcommand{\Section}[1]{{\medskip\Large \textbf{#1}\medskip}}
+\newcommand{\Subsection}[1]{{\medskip\large \underline{\textbf{#1}}\medskip}}
+
+\usepackage{float}
+
+\newcommand{\alignv}{\vphantom{\left[\overrightarrow{OM}\right]}}

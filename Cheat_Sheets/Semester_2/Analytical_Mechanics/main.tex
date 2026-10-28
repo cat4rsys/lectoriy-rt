@@ -1,0 +1,192 @@
+\input{preamble}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0cm}
+
+\AddToHook{shipout/background}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[opacity=0.1] at (current page.center) {
+      \includegraphics[width=0.8\paperwidth]{Images/lectoriy-rt-logo copy.pdf}
+    };
+  \end{tikzpicture}
+}
+
+\begin{document}
+
+\Section{Аналитическая механика}
+
+\Subsection{Кинематика материальной точки}
+
+\begin{itemize*}
+  \item \textbf{Радиус-вектор в \(\mathbb{R}^3\):} \(\vec{r} =
+  \begin{pmatrix} x \\ y \\ z \end{pmatrix}, \quad \vec{v} = \begin{pmatrix}
+  \dot{x} \\ \dot{y} \\ \dot{z} \end{pmatrix}, \quad \vec{w} = \begin{pmatrix}
+  \ddot{x} \\ \ddot{y} \\ \ddot{z} \end{pmatrix}\) \\
+
+  \item \textbf{Естественный способ (натуральный):} \(\vec{v} = |v|\hat{\tau}, \quad
+
+  |v| = \dfrac{ds}{dt}, \quad \dfrac{d\hat{\tau}}{ds} = K\hat{n}, \quad K =
+  \dfrac{1}{\rho}\) \--- радиус кривизны, \(\vec{w} = |\dot{v}|\hat{\tau} +
+
+  |v|^2K\hat{n}\) \\
+
+  \item \textbf{Криволинейные координаты:} \(e_i = \dfrac{1}{H_i}\dfrac{\partial\vec{r}}{\partial q_i}, \
+  H_i = \left|\dfrac{\partial\vec{r}}{\partial q_i}\right|\) \--- коэффициенты Ляме, \(\vec{v} =
+  \sum{H_i\hat{e_i}\dot{q}_i}\), компоненты ускорения: \(w_i = \dfrac{1}{H_i}\left[\dfrac{d}{dt}
+  \left(\dfrac{\partial(v^2/2)}{\partial\dot{q}_i}\right) - \dfrac{\partial(v^2/2)}{\partial q_i}
+  \right]\) \smallskip \\
+
+  \item \textbf{Полярные координаты:} \(\vec{v} = \dot{\rho}\hat{e}_\rho +
+  \rho\dot{\phi}\hat{e}_\phi + \dot{z}\hat{e}_z, \quad \vec{w} = (\ddot{\rho} -
+  \rho\dot{\phi}^2)\hat{e}_\rho + (\rho\ddot{\phi} + 2\dot{\rho}\dot{\phi})\hat{e}_\phi +
+  \ddot{z}\hat{e}_z\) \\
+\end{itemize*}
+
+\Subsection{Плоскопараллельное движение твердого тела}
+
+\begin{itemize*}
+  \item \(\vec{v}_M = \vec{v}_0 + \vec{\omega} \times \overrightarrow{OM} \quad\)
+  (\(\overrightarrow{OM}\) \--- вектор, соединяющий центр твердого тела \(O\) и точку
+  \(M\)) \\
+
+  \item \(\vec{w}_M = \vec{w}_0 + \vec{\epsilon} \times \overrightarrow{OM} + \vec{\omega}
+  \times \left[\vec{\omega} \times \overrightarrow{OM}\right] \) \\
+
+  \item \textbf{Осестремительное ускорение:} \(\vec{w}_\text{осестр} = \vec{\omega} \times
+  \left[\vec{\omega} \times \overrightarrow{OM}\right]\)
+\end{itemize*}
+
+\Subsection{Пространственное движение твердого тела}
+
+\begin{itemize*}
+  \item \(\dot{\vec{\omega}} = \vec{\epsilon} = |\dot{\omega}|\dfrac{\vec{\omega}}{|\omega|} +
+  \vec{\Omega} \times \vec{\omega} \quad\) (\(\vec{\Omega}\) \--- изменение \(\vec{\omega}\)
+  по направлению) \\
+
+  \item \(\vec{\omega}_\text{тт} = \sum{\vec{\omega}_i}\) \\
+
+  \item \textbf{Винтовое движение твердого тела:} \(\vec{v}_i = \lambda\vec{\omega}, \quad
+  \lambda = \dfrac{v_{0x} + \omega_yz - \omega_zy}{\omega_x} = \dfrac{v_{0y} + \omega_zx -
+  \omega_xz}{\omega_y} = \dfrac{v_{0z} + \omega_xy - \omega_yx}{\omega_z}\) \\
+\end{itemize*}
+
+\Subsection{Кватернионы}
+
+\begin{itemize*}
+  \item \(\Lambda = \lambda_0 + \lambda_1\hat{e_1} + \lambda_2\hat{e_2} + \lambda_3\hat{e_3} =
+  \lambda_0 + \vec{\lambda}\) \\
+
+  \item \textbf{Умножение кватернионов:} \(\Lambda \circ M = \underbrace{(\lambda_0\mu_0 -
+  \vec{\lambda} \cdot \vec{\mu})}_\text{скалярная часть} + \underbrace{(\vec{\lambda} \times
+  \vec{\mu} + \mu_0\vec{\lambda} + \lambda_0\vec{\mu})}_\text{векторная часть}\) \\
+
+  \item \textbf{Свойства кватернионов:} \(\lVert\Lambda\rVert = \lambda_0^2 + \lambda_1^2
+  + \lambda_2^2 + \lambda_3^2, \quad \Lambda \circ (M \circ N) = (\Lambda \circ M) \circ N,
+  \quad \Lambda \circ M \neq M \circ \Lambda, \quad \lVert \Lambda \circ M \rVert = \lVert
+  \Lambda \rVert \cdot \lVert M \rVert\) \\
+  \(\Lambda^{-1} = \dfrac{\tilde{\Lambda}}{\lVert \Lambda \rVert}, \quad \tilde{\Lambda} =
+  \lambda_0 - \lambda_1\hat{e_1} - \lambda_2\hat{e_2} - \lambda_3\hat{e_3}\) \\
+
+  \item \textbf{Модуль кватерниона:} \(|\Lambda| = \sqrt{\lVert \Lambda \rVert}\) \\
+
+  \item \textbf{Теорема Эйлера о конечном повороте:} в любое положение твердого тела можно прийти,
+  одним поворотом по некоторой оси \(\hat{e}\) на угол \(\phi\); кватернион поворота выглядит так:
+  \(\Lambda = \cos{\frac{\phi}{2} + \hat{e}\sin{\frac{\phi}{2}}}\). \\
+
+  \item \textbf{Теорема:} любое положение твердого тело можно задать одним единичным кватернионом.
+  \\
+
+  \item \textbf{Две точки зрения:} \underline{активная} (поворачивается вектор): \(R' =
+  \Lambda \circ R \circ \tilde{\Lambda}\),  \underline{пассивная} (поворачивается базис): \(R' =
+  \tilde{\Lambda} \circ R \circ \Lambda\)
+
+  \item \textbf{Сложение нескольких поворотов:} при активной точке зрения: \(\Lambda = \Lambda_n
+  \circ \Lambda_{n-1} \circ ... \circ \Lambda_1\), при пассивной точке зрения: \(\Lambda = \Lambda_1
+  \circ \Lambda_2 \circ ... \circ \Lambda_n\)
+
+\end{itemize*}
+
+\Subsection{Сложное движение материальной точки и твердого тела}
+
+\begin{itemize*}
+  \item \(\vec{v}_{M_\text{абс}} = \vec{v}_\text{пер} + \vec{v}_\text{отн} = \vec{v}_0 +
+  \vec{\omega} \times \overrightarrow{OM} + \vec{v}_\text{отн}\) \\
+
+  \item \(\vec{w}_{M_\text{абс}} = \underbrace{\vec{w}_0 + \vec{\epsilon} \times
+  \overrightarrow{OM} + \vec{\omega} \times \left[ \vec{\omega} \times \overrightarrow{OM}
+  \right]}_{w_\text{пер}} + \underbrace{\alignv 2\vec{\omega} \times
+  \vec{v}_\text{отн}}_{w_\text{кор}} + \underbrace{\alignv \vec{w}_\text{отн}}_{w_\text{отн}}\) \\
+\end{itemize*}
+
+\Subsection{Динамика}
+
+\begin{itemize*}
+
+  \item \textbf{Основные понятия:} центр масс: \(\vec{r}_c = \dfrac{\sum{m_i\vec{r}_i}}{\sum{m_i}}
+  \), импульс: \(\vec{Q} = \sum{m_i\vec{v}_i}\), момент импульса (кинетический момент): \(\vec{K}_A
+  = \sum{\vec{r}_{A_i} \times m_i\vec{v}_i}\) (относительно точки \(A\)), работа: \(\delta A =
+  \sum{\vec{f}_i \cdot \delta\vec{r}_i}\), кинетическая энергия: \(T = \sum{\frac{1}{2}m_iv^2_i}\),
+  момент инерции \(I_A = \sum{m_i r_{A_i}^2}\)\\
+
+  \item \textbf{Основная теорема динамики (теорема об изменении):} \(\dfrac{dQ}{dt} =
+  \sum{f^\text{вн}_i}\) \\
+
+  \item \textbf{Момент сил:} \(\vec{M}_A = \dfrac{d\vec{K}_A}{dt} \quad \vec{M}_A = \sum{\vec{r}_{A_i} \times
+  \vec{f}_i}\) \\
+
+  \item \textbf{Теорема Кенига:} \(T = T_c + T_\text{отн цм}\). Если твердое тело движется
+  поступательно и вращается: \(T = \frac{1}{2}mv^2_c + \frac{1}{2}I_c\omega^2_\text{абс}\) \\
+
+\end{itemize*}
+
+\Subsection{Динамика в неинерциальных системах}
+
+\begin{itemize*}
+
+  \item \(\underbrace{m\vec{w}^\text{абс}}_{\vec{F}^\text{вн}} = m\vec{w}^\text{пер} +
+  m\vec{w}^\text{кор} + m\vec{w}^\text{отн}\) \\
+
+  \item \(\sum{m_i\vec{w}^\text{отн}_i} = \vec{F}^\text{вн} + \vec{F}^\text{кор} +
+  \vec{F}^\text{пер}, \quad \vec{F}^\text{пер} = -\sum{m_i\vec{w}^\text{пер}_i}, \quad
+  \vec{F}^\text{кор} = -\sum{m_i\vec{w}^\text{кор}_i}\) \medskip \\
+
+  \item \(\dfrac{d\vec{K}^\text{отн}_A}{dt} = \vec{M}^\text{вн}_A + \vec{M}^\text{кор}_A +
+  \vec{M}^\text{пер}_A \underbrace{+ \ m[\vec{v}_c \times \vec{v}_a]}_\text{если т.\,А подвижна}\)
+  \medskip \\
+
+  \item \(\vec{M}^\text{вн}_A = \sum{\vec{r}_{A_i} \times F^\text{вн}_i}, \quad
+  \vec{M}^\text{кор}_A = -\sum{\vec{r}_{A_i} \times m_i\vec{w}^\text{кор}_i}, \quad
+  \vec{M}^\text{пер}_A = -\sum{\vec{r}_{A_i} \times m_i\vec{w}^\text{пер}_i}\) \\
+
+\end{itemize*}
+
+\Subsection{Движение в центральном поле}
+
+\begin{itemize*}
+  \item \(\vec{v} = \dot{r}\hat{e}_r + r\dot{\phi}\hat{e}_\phi, \quad \vec{w} = (\ddot{r} -
+  r\dot{\phi}^2)\hat{e}_r + \underbrace{(r\ddot{\phi} + 2\dot{r}\dot{\phi})}_{= 0}\hat{e}_\phi,
+  \quad \dfrac{f(r)}{m} = \ddot{r} - r\dot{\phi}^2, \quad r^2\dot{\phi} = \dfrac{|K_0|}{m} =
+  \text{const} = c\) \\
+
+  \item \(\nabla \Pi = -\vec{f}, \quad f(r) = -\dfrac{MmG}{r^2}, \quad \mu = GM, \quad u =
+  1/r, \quad \dfrac{d^2 u}{d\phi^2} + u = \dfrac{\mu}{c^2}\) \--- второе уравнение Бине, \\
+  \(\dfrac{1}{r} = \dfrac{\mu}{c^2} + A\cos{\phi} + B\sin{\phi}\) \\
+
+  \item \(p = \dfrac{K_0^2}{m\alpha}\)~--- фокальный параметр,\(\quad e = \sqrt{1 +
+  \dfrac{2EK^2_0}{m\alpha^2}}\)~--- эксцентриситет,\(\quad \alpha = \mu m\) \medskip \\
+
+\item
+  \begin{tabular}{|c|c|c|}
+  \hline
+  Эксцентриситет (\(e\)) & Тип траектории & Энергия (\(E\)) \\
+  \hline
+  \(0\)      & окружность& \(< 0\) \\
+  \((0, 1)\) & эллипс    & \(< 0\) \\
+  \(1\)      & парабола  & \(0\) \\
+  \(> 1\)      & гипербола & \(> 0\) \\
+  \hline
+  \end{tabular}
+
+\end{itemize*}
+
+\end{document}
