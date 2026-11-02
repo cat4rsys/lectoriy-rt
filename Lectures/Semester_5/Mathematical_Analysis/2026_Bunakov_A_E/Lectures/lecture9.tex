@@ -126,6 +126,157 @@ c_{m+1} (z - z_0) + \dots]\). Ряд в квадратных скобках та
 \Section{Вычеты}
 
 \begin{definition}
-    Пусть \(z \ne \infty\)~--- ИОТ \(f(z)\). Вычетом функции \(f(z)\) в окрестности \(z_0\) назовём
-    число
+Пусть \(z \ne \infty\)~--- ИОТ \(f(z)\). Вычетом функции \(f(z)\) в окрестности \(z_0\) назовём
+число \(\res\limits_{z_0} f(z) = c_{-1}\)~--- коэффициент ряда Лорана функции \(f(z)\) в 
+\(\mathring{B}(z_0)\).
 \end{definition}
+
+\begin{statement}
+Пусть \(f(z)\)~--- регулярна в \(\mathring{B}_R(z_0)\) и \(\rho \in (0, R)\). Тогда 
+\(\int\limits_{|z - z_0| = \rho} f(z) \, dz = 2 \pi i \res\limits_{z_0} f(z)\).
+\end{statement}
+
+\begin{proof}
+В \(\mathring{B}_R(z_0)\) имеем разложение \(f(z) = \sum\limits_{n = - \infty}^{+ \infty} c_n 
+(z - z_0)^n\). Так как на окружности \(|z - z_0| = \rho\) ряд сходится равноерно, то интегрируя
+почленно имеем следующее: \(\int\limits_{|z - z_0| = \rho} f(z) \, dz = \sum\limits_{n = - \infty}^
+{+ \infty} c_n \int\limits_{|z - z_0| = \rho} (z - z_0)^n \, dz = c_{-1} \cdot 2 \pi i = 
+2 \pi i \res\limits_{z_0} f(z)\). 
+\end{proof}
+
+\begin{note}
+Если \(z_0 \ne \infty\) и \(f(z)\) регулярна или \(z_0\)~--- её УОТ, то \(\res\limits{z_0} f(z) = 
+0\).
+\end{note}
+
+\begin{definition}
+Пусть \(z_0 = \infty\)~--- ИОТ \(f(z)\). Тогда \(\res\limits_{\infty} f(z) = -c_{-1}\), где 
+\(c_{-1}\) берётся из разложения \(\sum\limits_{n = - \infty}^{+ \infty} c_n z^n\).
+\end{definition}
+
+\begin{note}
+Если \(z_0 = \infty\)~--- УОТ, то вполне может быть, что \(\res\limits{\infty} f(z) \ne 0\)
+\end{note}
+
+\begin{example}
+\(f(z) = \dfrac{1}{z}\). \(z_0 = \infty\)~--- УОТ, \(\res\limits_{\infty} f(z) = -1\).
+\end{example}
+
+\begin{statement}
+Пусть \(f(z)\) регулярна в \(\mathring{B}_R(\infty)\) и \(R < \rho < + \infty\). Тогда
+\begin{equation}
+    \int\limits_{|z| = \rho} f(z) \, dz = - 2 \pi i \res\limits_{\infty} f(z).
+\end{equation}
+\end{statement}
+
+Рассмотрим вычисление вычета в полюсе \(z \ne \infty\).
+
+\begin{statement}
+Пусть \(z_0 \ne \infty\)~--- полюс порядка меньше иил равного \(m\) для \(f\). Тогда
+\begin{equation}
+    \res\limits_{z_0} f(z) = \dfrac{1}{(m-1)!} \lim\limits_{z \to z_0} [(z - z_0)^m f(z)]^{(m - 1)}
+\end{equation}
+\end{statement}
+
+\begin{proof}
+\(f(z) = \dfrac{c_{-m}}{(z - z_0)^m} + \dots + \dfrac{c_{-1}}{z - z_0} + \dots\). При этом здесь
+\(c_{-m}\) не обязательно не равно нулю. Тогда \(f(z) (z - z_0)^m = c_{-m} + c_{-m + 1} (z - z_0)
++ \dots + c_{-1} (z - z_0)^{m - 1} + c_0 (z - z_0)^m = \dots\). Ряд в правой части сходится и в 
+полной окрестности. Его сумма \(g(z)\) регулярна в \(B_R(z_0)\). Тогда 
+\(f(z)(z - z_0)^m \equiv g(z)\) на \(\mathring{B}_R(z_0)\). Дифференцируя это выражение \((m - 1)\) 
+раз в \(\mathring{B}_R(z_0)\) имеем, что \([(z - z_0)^m f(z)]^{(m - 1)} \equiv c_{-1} (m-1)! + m!
+c_0 (z - z_0) + \dots\). Тогда \(\lim\limits_{z \to z_0} [(z - z_0)^m f(z)]^{(m - 1)} = c_{-1} 
+(m-1)!\)
+\end{proof}
+
+\begin{note}
+Для \(n = 1\) формула упрощается до:
+\begin{equation}
+    \res\limits_{z_0} f(z) = \lim\limits_{z \to z_0} (z - z_0) f(z). \label{eq_24:residue_for_p1p}
+\end{equation}
+\end{note}
+
+\begin{statement}
+Пусть \(f(z) = \dfrac{g(z)}{h(z)}\), где \(g, h\) регулярные в \(z_0\) и \(h\) имеет в \(z_0\)
+нуль первого порядка. Тогда \(\res\limits_{z_0} f(z) = \dfrac{g(z_0)}{h'(z_0)}\).
+\end{statement}
+
+\begin{proof}
+Из \eqref{eq_24:residue_for_p1p} \(\res\limits_{z_0} f(z) = \lim\limits_{z \to z_0} (z - z_0) 
+\dfrac{g(z)}{h(z)} = \lim\limits_{z \to z_0} \dfrac{g}{\frac{h(z) - h(z_0)}{z - z_0}} = 
+\dfrac{g(z_0)}{h'(z_0)}\).
+\end{proof}
+
+\begin{statement}
+\textbf{(Теорема Коши о вычетах).} Пусть \(G\)~--- ОСПГ и \(f(z)\) регулярна в \(\overline{G}\) за
+исключением конечного числа ИОТ \(z_1, \dots, z_n \in G\). Тогда:
+\begin{equation}
+    \int\limits_{\partial G} f(z) \, dz = 2 \pi i \sum\limits_{k = 1}^n \res\limits_{z_n} f(z)
+    \label{24_eq:th_koshi_residue}
+\end{equation}
+\end{statement}
+
+\begin{proof}
+Рассмотрим несколько случаев:
+\begin{enumerate}[wide=20pt, label=\roman*., itemsep=0ex]
+\item Пусть \(G\)~--- ограниченная ОСПГ.
+
+\noindent
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.9, >=latex]
+    % Внешняя граница области G
+    \draw[thick] plot [smooth cycle, tension=0.7] coordinates {
+        (0.5, 0.5) (1, 3.5) (3, 4.2) (5.5, 3.8) 
+        (5.8, 1.2) (4.5, -0.3) (2, -0.6) (0.2, -0.2)
+    };
+    % Обозначение области
+    \node at (6.2, 1.5) {\Large $G$};
+
+    % Заштрихованная область 1 (справа)
+    \draw[thick, pattern=vertical lines, pattern color=black!70] 
+        plot [smooth cycle, tension=0.6] coordinates {
+            (4.2, 3) (4.6, 2.5) (4.8, 1.8) (4.2, 1.1) (3.9, 1.8) (4.1, 2.3)
+        };
+
+    % Заштрихованная область 2 (слева внизу)
+    \draw[thick, pattern=vertical lines, pattern color=black!70] 
+        plot [smooth cycle, tension=0.7] coordinates {
+            (1.8, 1.3) (2.5, 1.3) (2.5, 0.6) (1.8, 0.7)
+        };
+
+    % Окрестность точки z_1 (сверху)
+    \def\zOne{(2.6, 3.2)}
+    \def\rOne{0.75}
+    \draw[thick] \zOne circle (\rOne);
+    \fill \zOne circle (1.5pt) node[right=1pt] {$z_1$};
+    \draw[->] \zOne -- ++(140:\rOne) node[midway, above] {\scriptsize $R_1$};
+
+    % Окрестность точки z_2 (снизу справа)
+    \def\zTwo{(3.5, 0.2)}
+    \def\rTwo{0.5}
+    \draw[thick] \zTwo circle (\rTwo);
+    \fill \zTwo circle (1.5pt) node[right=1pt] {$z_2$};
+    \draw[->] \zTwo -- ++(120:\rTwo) node[midway, left] {\scriptsize $R_2$};
+
+    % Окрестность точки z_n (снизу слева)
+    \def\zN{(1.0, -0.2)}
+    \def\rN{0.2}
+    \draw[thick] \zN circle (\rN);
+    \fill \zN circle (1.5pt) node[right=1pt] {$z_n$};
+    \draw[->] \zN -- ++(130:\rN) node[midway, left] {\scriptsize $R_n$};
+
+\end{tikzpicture}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.52\textwidth}
+    Выберем \(R_1, \dots, R_n\) так, чтобы \(\overline{B_{R_1}(z_1)}, \dots, 
+    \overline{B_{R_1}(z_1)} \subset G\) и попарно не пересекались. Рассмотрим область \(D = G 
+    \setminus (\bigcup\limits_{k = 1}^n \overline{B_{R_k}(z_k)})\). По интегральной теореме Коши для
+    ограниченной ОСПГ (\ref{17:int_koshi_ogr_ospg}) \(0 = \int\limits_{\partial D} f(z) \, dz = 
+    \int\limits_{\partial G} f(z) \, dz = \sum\limits_{k = 1}^n \int\limits_{|z - z_k| = R_k} f(z)
+    \, dz = 2 \pi i \sum\limits_{k = 1}^n \res\limits_{z_0} f(z)\). Тогда выполняется 
+    \eqref{24_eq:th_koshi_residue}.
+\end{minipage}
+\end{enumerate}
+\end{proof}
