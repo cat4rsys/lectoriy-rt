@@ -1,0 +1,131 @@
+\begin{proof}
+Пусть в \(\mathring{B}_R(z_0)\colon \, f(z) = \sum\limits_{n = 0}^{+\infty} c_n (z-z_0)^n\), то
+есть главная часть в разложении в ряд Лорана отсутствует. В силу теоремы Абеля, если ряд 
+сходится в \(\mathring{B}_R(z_0)\), то он сходится и в \(B_R(z_0)\). Его сумма непрерывна в 
+\(B_R(z_0)\), а значит \(\lim\limits_{z \to z_0} \sum\limits_{n = 0}^{+\infty} c_n (z-z_0)^n = 
+c_0\), а значит \(z_0\)~--- УОТ.
+\end{proof}
+
+\begin{corollary} \label{23:criterion_removable_point}
+Из утверждений \ref{23:principal_part_of_bounded_reg_func} и 
+\ref{23:sufficient_cond_of_removable_point} следует, что:
+\begin{enumerate}[wide=20pt, label=\arabic*., itemsep=0ex]
+\item \(z_0\)~--- УОТ тогда и только когда главная часть разложения в ряд Лорана 
+    отсутствует;
+\item Если \(f(z)\) ограничена в \(\mathring{B}_R(z_0)\), то \(z_0\)~--- УОТ.
+\end{enumerate}
+\end{corollary}
+
+\begin{statement}
+Если \(z_0 \ne \infty\)~--- полюс, то главная часть ряда Лорана функции \(f(z)\) в \(\mathring{B}
+_R(z_0)\) содержит конечное (ненулевое) число слагаемых.
+\end{statement}
+
+\begin{proof}
+Пусть \(z_0 \ne \infty\)~--- полюс. Тогда \(\exists \mathring{B}_R(z_0) \colon \, \forall z \in
+\mathring{B}_R(z_0) \rightarrow |f(z)| < 1\). Обозначим через \(g(z) = \dfrac{1}{f(z)}\). В 
+\(\mathring{B}_R(z_0)\) имеем \(|g(z)| < 1\), а значит по утверждениям 
+\ref{23:principal_part_of_bounded_reg_func} и \ref{23:sufficient_cond_of_removable_point} \(z_0\)
+~--- УОТ \(g(z)\), а значит главная часть разложения \(g(z)\) отсутствует, то есть \(g(z) = 
+\sum\limits_{n = 0}^{+\infty} c_n (z-z_0)^n\) в \(\mathring{B}_R(z_0)\). Но по теореме Абеля ряд в 
+правой части выражения сходится и в полной окрестности \(B_R(z_0)\) к некоторой регулярной функции 
+\(\hat{g}(z)\colon \, \hat{g}(z) \equiv g(z)\) в \(\mathring{B}_R(z_0)\). Имеем 
+\(\lim\limits_{z \to z_0} \hat{g}(z) = \lim\limits_{z \to z_0} g(z) = 0\), то есть \(c_0 = 0\).
+\(\hat{g}(z) \ne 0\) в \(\mathring{B}_R(z_0)\), то есть \(z = z_0\)~--- нуль конечного порядка 
+\(n\). Итак \(\exists m \in \N\), такое что в \(B_R(z_0)\) \(\hat{g}(z) = (z-z_0)^m\cdot[c_m + 
+c_{m+1} (z - z_0) + \dots]\). Ряд в квадратных скобках также сходится в \(B_R(z_0)\) и его сумма~---
+регулярная функция \(h(z)\) в \(B_R(z_0)\). \(h(z_0) = c_m \ne 0\), а значит \(w = \dfrac{1}{h(z)}\)
+~--- регулярная в \(B_R(z_0)\). \(f(z) = \dfrac{w(z)}{(z-z_0)^m} = \dfrac{a_0 + a_1 (z - z_0) + 
+\dots}{(z-z_0)^n} = \dfrac{a_0}{(z-z_0)^m} + \dots + a_m + \dots\).
+\end{proof}
+
+\begin{definition}
+\(z_0\)~--- полюс порядка \(n\), если в разложении в ряд Лорана \ref{eq_23:Laurent_series} 
+\(c_{-m} \ne 0\) и \(c_n = 0\) для всех \(n < m\).
+\end{definition}
+
+\begin{statement}
+Если ряд Лорана функции \(f(z)\) в \(\mathring{B}_R(z_0)\) имеет конечное (ненулевое) число
+слагаемых в главной части, то \(z_0\)~--- полюс.
+\end{statement}
+
+\begin{proof}
+\(f(z) = \dfrac{c_{-m}}{(z-z_0)^m} + \dots + \dfrac{c_{-1}}{z-z_0} + c_0 + c_1 (z - z_0) + \dots = 
+\dfrac{c_{-m} + c_{-m+1}(z-z_0) + \dots}{(z - z_0)^m}\). Степенной ряд числителя сходится и в полной
+ окрестности \(B_R(z_0)\). Его сумма непрерывна в этой окрестности, а значит 
+\(\lim\limits_{z \to z_0} [c_{-m} + c_{-m +1} (z-z_0) + \dots] = c_{-m} \ne 0\). Тогда
+\(\lim\limits_{z \to z_0} f(z) = \infty\), то есть \(z_0\)~--- полюс по определению.
+\end{proof}
+
+\begin{corollary} \label{23:criterion_pole}
+\(z_0 \ne \infty\)~--- полюс \(f(z)\) тогда и только когда главная часть разложения в ряд Лорана
+\(f(z)\) в окрестности \(\mathring{B}_R(z_0)\) содержит конечное (ненулевое) число слагаемых.
+\end{corollary}
+
+\begin{corollary} \label{23:criterion_essential_point}
+Из следствий \ref{23:criterion_removable_point} и \ref{23:criterion_pole} получается, что ИОТ
+\(z_0 \ne \infty\) является СОТ тогда и только когда главная часть ряда Лорана имеет бесконечное
+число слагаемых.
+\end{corollary}
+
+\begin{note}
+В силу утверждения \ref{23:ISP_of_1/z} результаты следствий \ref{23:criterion_removable_point}, 
+\ref{23:criterion_pole} и \ref{23:criterion_essential_point} верны и для \(z = \infty\), так как
+коэффициенты главной части разложения \(f(z)\) в \(\mathring{B}_R(\infty)\) те же самые, что и
+коэффициенты главной части \(f(\dfrac{1}{z})\) в \(\mathring{B}_R(0)\).
+\end{note}
+
+\begin{statement}
+\textbf{(Теорема Сохоцкого).} Пусть \(z_0 \ne \infty\)~--- СОТ \(f(z)\). Тогда \(\forall z \in \oCo
+\; \exists \{z_n\}\colon \, z_n \to z_0, f(z_n) \to A\) при \(n \to \infty\).
+\end{statement}
+
+\begin{proof}
+\textit{Пусть \(A \ne \infty\).} \textbf{От противного:} пусть такой \(\{z_n\}\) не существует для 
+этого \(A\). Пусть \(f\)~--- регулярная в \(\mathring{B}_R(z_0)\). Сформулируем некоторое
+утверждение:
+
+\begin{equation}
+    \forall \delta \in (0, R) \; \forall \epsilon > 0 \; \exists z \in \mathring{B}_\delta(z_0) 
+    \colon |f(z) - A| < \epsilon. \tag{S} \label{eq_23:auxillary_statement}
+\end{equation}
+
+Если \ref{eq_23:auxillary_statement} верно, то существует нужная нам последовательность \(\{z_n\}\)
+(достаточно взять \(\delta = \epsilon = \dfrac{1}{n} < R\)). Если такой \(\{z_n\}\) не существует,
+то неверно \ref{eq_23:auxillary_statement}, то есть верно его отрицание:
+
+\begin{equation}
+    \exists \delta_0 \in (0, R) \; \exists \epsilon_0 > 0 \colon \; \forall z \in 
+    \mathring{B}_{\delta_0}(z_0) \to |f(z) - A| \ge \epsilon_0. \tag{S'} 
+    \label{eq_23:negation_auxillary_statement}.
+\end{equation}
+
+В \(\mathring{B}_{\delta_0}(z_0)\) определим \(g(z) = \dfrac{1}{f(z) - A}\). В 
+\(\mathring{B}_{\delta_0}(z_0)\) \(|g(z)| \le \dfrac{1}{\epsilon_0}\), то есть \(g(z)\)~--- 
+ограничена, то есть \(z_0\)~--- УОТ для \(g(z)\), а значит \(\exists \lim\limits_{z \to z_0} 
+\dfrac{1}{f(z) - A} = B \ne \infty\).
+
+Возможны только два случая:
+\begin{enumerate}[wide=20pt, label=\arabic*., itemsep=0ex]
+\item \(B \ne 0\). Тогда \(\exists \lim\limits_{z \to z_0} f(z) = A + \dfrac{1}{B} \in \Co\), то 
+    есть \(z_0\)~--- УОТ для \(f(z)\). Противоречие с условием, что \(z_0\)~--- СОТ для \(f(z)\).
+\item \(B = 0\). Тогда \(\exists \lim\limits_{z \to z_0} f(z) + A = \infty\). Так как \(A \ne 
+    \infty\), то \(\lim\limits_{z \to z_0} f(z) = \infty\), то
+    есть \(z_0\)~--- полюс для \(f(z)\). Противоречие с условием, что \(z_0\)~--- СОТ для \(f(z)\).
+\end{enumerate}
+
+\textit{Для \(A = \infty\):} если такой \(\{z_n\}\) не существует, то \(f(z)\)~--- ограничена, то 
+есть\(z_0\)~--- УОТ для \(f(z)\). Получили противоречие.
+\end{proof}
+
+\begin{corollary}
+В силу утверждения \ref{23:ISP_of_1/z} теорема Сохоцкого остаётся верной и для \(z = \infty\).
+\end{corollary}
+
+
+\Section{Вычеты}
+
+\begin{definition}
+    Пусть \(z \ne \infty\)~--- ИОТ \(f(z)\). Вычетом функции \(f(z)\) в окрестности \(z_0\) назовём
+    число
+\end{definition}
