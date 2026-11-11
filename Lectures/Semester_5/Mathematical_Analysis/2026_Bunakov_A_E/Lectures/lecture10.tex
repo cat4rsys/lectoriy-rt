@@ -1,0 +1,422 @@
+\item Пусть \(G\)~--- неограниченная ОСПГ. Тогда \(\partial G = \gamma_1 \cup \dots \cup \gamma_m\),
+    \(f\)~--- регулярна в \(\overline{G}\) за исключением конечного числа точек \(z_1, \dots, 
+    z_{n-1}, z_n = \infty\).
+
+\noindent
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\begin{tikzpicture}[
+    hole/.style={
+        draw=black, 
+        thick, 
+        pattern=north east lines, 
+        pattern color=black!80
+    },
+    % Стиль для внешнего контура C_R со стрелкой направления
+    contour/.style={
+        draw=blue!50!black,
+        dashed,
+        dash pattern=on 5pt off 5pt,
+        thick,
+        postaction={decorate},
+        decoration={
+            markings,
+            mark=at position 0.02 with {\arrow{Stealth[scale=1.2]}}
+        }
+    }
+]
+
+    % 1. Внешний пунктирный контур C_R с направлением обхода против часовой стрелки
+    \draw[contour] (0,0) circle (2.9cm);
+    \node[blue!50!black, right] at (3.5, -0.3) {$C_R$};
+
+    % 2. Три заштрихованные области (особенности/вырезы)
+    % Верхняя левая область
+    \draw[hole] plot [smooth cycle, tension=0.7] coordinates {
+        (-2.1, 1.3) (-1.8, 1.8) (-1.1, 1.8) (-0.8, 1.4) (-1.3, 1.1) (-1.9, 1.1)
+    };
+    
+    % Верхняя правая область
+    \draw[hole] plot [smooth cycle, tension=0.7] coordinates {
+        (1.0, 1.2) (1.2, 1.6) (1.6, 1.5) (1.7, 1.1) (1.3, 0.9) (1.0, 1.0)
+    };
+    
+    % Центральная область
+    \draw[hole] plot [smooth cycle, tension=0.7] coordinates {
+        (-0.5, -0.2) (-0.3, 0.3) (0.2, 0.2) (0.2, -0.4) (-0.2, -0.5) (-0.5, -0.4)
+    };
+
+    % 3. Отмеченные точки z_1, z_2, ..., z_n (звездочки)
+    \node at (-1.9, 0.1) {$\ast$};
+    \node[right] at (-1.8, 0.05) {$z_1$};
+
+    \node at (1.1, -0.3) {$\ast$};
+    \node[right] at (1.2, -0.25) {$z_2$};
+
+    \node at (0.0, -1.7) {$\ast$};
+    \node[right] at (0.1, -1.7) {$z_{n-1}$};
+
+    % Точка на бесконечности снаружи контура
+    \node at (3.2, 2.7) {$\ast$};
+    \node[right] at (3.3, 2.7) {$z_n = \infty$};
+
+\end{tikzpicture}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.52\textwidth}
+    Рассмотрим вспомогательную ОСПГ \(D = G \cap \{|z|<R\}\). По предыдущему пункту для области 
+    \(D\) имеем \(\int\limits_{\partial G} f \, dz + \int\limits_{C_R} f \, dz = 2 \pi i 
+    \sum\limits_{k = 1}^{n-1} \res\limits_{z = z_n} f(z)\). Также справедливо выражение 
+    \(\int\limits_{C_R} f \, dz = - 2 \pi i \res\limits_{z = \infty} f(z)\). Таким образом получаем
+    требуемую формулу.
+\end{minipage}
+\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+Пусть \(f\)~--- регулярна в \(\oCo\) за исключением конечного числа ИОТ, а именно \(z_1, \dots, 
+z_{n-1}, z_n = \infty\). Тогда \(\sum\limits_{k = 1}^n \res\limits_{z = z_k} f = 0\).
+\end{corollary}
+
+\begin{proof}
+    Рассмотрим две области \(G\) и \(G_1\):
+
+\noindent
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\begin{tikzpicture}[
+    axis/.style={draw=black, thick, -{Stealth[scale=1.2]}},
+    circle_style/.style={draw=black, thick}
+]
+
+    % 1. Координатные оси
+    \draw[axis] (-3.2, 0) -- (3.3, 0);
+    \draw[axis] (0, -3.2) -- (0, 3.3);
+
+    % 2. Окружность с центром в начале координат
+    \draw[circle_style] (0,0) circle (2.2cm);
+
+    % 3. Отмеченные точки внутри круга
+    % Точка z_1 (II четверть)
+    \node at (-0.85, 1.05) {$\ast$};
+    \node[right] at (-0.8, 1.05) {$z_1$};
+
+    % Точка z_2 (I четверть)
+    \node at (0.7, 1.05) {$\ast$};
+    \node[below] at (0.75, 1.0) {$z_2$};
+
+    % Точка z_{n-1} (III четверть)
+    \node at (-0.7, -1.05) {$\ast$};
+    \node[below] at (-0.65, -1.1) {$z_{n-1}$};
+
+    % 4. Подписи областей G (внутри) и G_1 (снаружи)
+    \node at (1.35, -1.0) {$G$};
+    \node at (2.7, -1.3) {$G_1$};
+
+\end{tikzpicture}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.52\textwidth}
+    Применяя теорему Коши о вычетах к этим областям получим:
+    \[\ointctrclockwise\limits_{C_R} f(z) \, dz = 2 \pi i \sum\limits_{k = 1}^{n-1} 
+    \res\limits_{z = z_n} f(z)\]
+    \[\ointclockwise\limits_{C_R} f(z) \, dz = 2 \pi i \res\limits_{z = \infty} f(z)\]
+
+    Складывая выражения получим \(\sum\limits_{k = 1}^n \res\limits_{z = z_k} f = 0\).
+\end{minipage}
+\end{proof}
+
+
+\Section{Вычисление несобственных интегралов}
+
+\begin{lemma} \label{25:lemma_plus}
+Пусть:
+\begin{enumerate}[wide=20pt, label=\arabic*., itemsep=0ex]
+\item \(f(z)\)~--- регулярна в \(\{z \colon \im{z} \ge 0\}\) за исключением, быть может, конечного
+    числа ИОТ \(z_1, \dots, z_n \in \{z \colon \im{z} > 0\}\),
+\item \(\lim\limits_{R \to + \infty} \int\limits_{C_R^+} f(z) \, dz = 0\), где \(C_R^+ = \{z \colon
+    |z| = R, \im z \ge 0\}\).
+\end{enumerate}
+
+Тогда 
+\begin{equation}
+    \mathrm{v.p.} \int\limits_{-\infty}^{\infty} f(x) \, dx = 2\pi i\sum\limits_{k = 1}^n 
+    \res\limits_{z = z_k} f(z) \label{25_eq:lemma_plus}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+    Пусть \(R > \max\limits_{k = \overline{1, n}} |z_k|\). Рассмотрим ограниченную ОСПГ \(D = \{
+    z \colon |z| < R, \im z > 0\}\). Применив для неё теорему Коши о вычетах получим:
+    \[\int\limits_{-R}^R f(x) \, dx + \int\limits_{C_R^+} f(z) \, dz = 2\pi i \sum\limits_{k = 1}^n 
+    \res\limits_{z = z_k} f(z).\]
+    Переходя к пределу при \(R \to +\infty\) получим равенство \eqref{25_eq:lemma_plus}. 
+\end{proof}
+
+\begin{lemma} \label{25:lemma_minus}
+Пусть:
+\begin{enumerate}[wide=20pt, label=\arabic*., itemsep=0ex]
+\item \(f(z)\)~--- регулярна в \(\{z \colon \im{z} \le 0\}\) за исключением, быть может, конечного
+    числа ИОТ \(z_1, \dots, z_n \in \{z \colon \im{z} < 0\}\),
+\item \(\lim\limits_{R \to + \infty} \int\limits_{C_R^-} f(z) \, dz = 0\), где \(C_R^- = \{z \colon
+    |z| = R, \im z \le 0\}\).
+\end{enumerate}
+
+Тогда 
+\begin{equation}
+    \mathrm{v.p.} \int\limits_{-\infty}^{\infty} f(x) \, dx = -2\pi i\sum\limits_{k = 1}^n 
+    \res\limits_{z = z_k} f(z) \label{25_eq:lemma_minus}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Доказательство аналогично доказательтву леммы \ref{25:lemma_plus} за исключением того, что граница
+области будет обходиться по часовой стрелке, поэтому в равенстве \eqref{25_eq:lemma_minus}
+возникает минус.
+\end{proof}
+
+\begin{note}
+Если несобственный интеграл \(\int\limits_{-\infty}^{+\infty} f(x) \, dx\) сходится, то в формулах
+\eqref{25_eq:lemma_plus} и \eqref{25_eq:lemma_minus} можно не писать \(\mathrm{v.p.}\).
+\end{note}
+
+\begin{statement}
+Пусть:
+\begin{enumerate}[wide=20pt, label=\arabic*., itemsep=0ex]
+\item \(P(z), Q(z)\)~--- многочлены, не имеющие общих корней;
+\item \(Q(z)\) не имеет вещественных корней;
+\item \(\deg{Q(z)} \ge \deg{P(z)} + 2\).
+\end{enumerate}
+
+Тогда
+\begin{equation}
+    \int\limits_{-\infty}^{+\infty} \dfrac{P(x)}{Q(x)} \, dx = 
+    \begin{cases}
+    2\pi i \sum\limits_k \res\limits_{z = z_k} \dfrac{P(z)}{Q(z)}, & z_k \text{ --- корни } Q(z) 
+    \text{ в верхней полуплоскости}, \\[10pt]
+    -2\pi i \sum\limits_k \res\limits_{z = z_k} \dfrac{P(z)}{Q(z)}, & z_k \text{ --- корни } Q(z) 
+    \text{ в нижней полуплоскости}
+    \end{cases}
+\end{equation}
+\end{statement}
+
+\begin{proof}
+Обозначим \(f(z) = \dfrac{P(z)}{Q(z)}\) и проверим что к \(f(z)\) применима лемма 
+\ref{25:lemma_plus}. Из условий утверждения следует, что \(\exists \lim\limits_{z \to \infty} 
+\dfrac{P(z)\cdot z^2}{Q(z)} = A \ne \infty\), а значит \(\exists \lim\limits_{z \to \infty} 
+\left|\dfrac{P(z)\cdot z^2}{Q(z)}\right| = |A|\). Тогда \(\exists R_0 > 0 \colon \forall z \colon 
+|z| > R_0 \to \left|\dfrac{P(z)\cdot z^2}{Q(z)}\right| \le |A| + 1\), то есть 
+\(\left|\dfrac{P(z)}{Q(z)}\right| \le \dfrac{|A| + 1}{|z^2|}\). Из этого следует, что 
+\(\int\limits_{C_R^+}\dfrac{P(z)}{Q(z)} \, dz \le \dfrac{|A| + 1}{R^2} \cdot 2 \pi R \to 0\) при 
+\(R \to \infty\).
+\end{proof}
+
+\begin{lemma} \label{25:lemma_Jordan}
+\textbf{(Жордана). }Пусть:
+
+\noindent
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\begin{tikzpicture}[
+    axis/.style={draw=black, thick, -{Stealth[scale=1.2]}},
+    contour/.style={draw=black, thick}
+]
+
+    % 1. Штриховка под горизонтальной осью (нижняя полуплоскость)
+    \fill[pattern=north east lines, pattern color=black!80] (-3.5, -0.35) rectangle (3.5, 0);
+
+    % 2. Координатные оси
+    \draw[axis] (-3.7, 0) -- (3.8, 0);
+    \draw[axis] (0, -0.8) -- (0, 3.6);
+
+    % 3. Внутренний заштрихованный полукруг (радиус R_0)
+    \filldraw[contour, pattern=north west lines, pattern color=black!80] 
+        (1.3, 0) arc (0:180:1.3cm) -- cycle;
+
+    % 4. Внешняя полуокружность C_R^+ (радиус R)
+    \draw[contour] (2.6, 0) arc (0:180:2.6cm);
+
+    % 5. Подписи на чертеже
+    \node[below left] at (-2.6, 0.55) {$-R$};
+    \node[below right] at (1.3, 0.55) {$R_0$};
+    \node[right] at (2.4, 1.3) {$C_R^+$};
+
+\end{tikzpicture}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.52\textwidth}
+\begin{enumerate}[wide=20pt, label=\arabic*., itemsep=0ex]
+\item \(G = \{z \colon |z| \ge R_0 > 0; \im{z} \ge 0\}\)
+\item \(f(z) \in C(\overline{G})\);
+\item \(\max\limits_{z \in C_R^+} |f(z)| = M(R) \to 0\) при \(R \to +\infty\);
+\item \(\alpha > 0\).
+\end{enumerate}
+
+Тогда
+\begin{equation}
+    \int\limits_{C_R^+} f(z)e^{i\alpha z} \, dz \to 0, \text{ при } R \to \infty
+\end{equation}
+\end{minipage}
+\end{lemma}
+
+\begin{proof}
+\(|\int\limits_{C_R^+} f(z) e^{i \alpha z} \, dz| \le \int\limits_{C_R^+} |f(z)| |e^{i \alpha z}| 
+\, |dz| \le M(R) \int\limits_{C_R^+} |e^{i \alpha z}| \, |dz|\). Зададим параметризацию
+\(z = Re^{it}\), \(t \in [0, \pi]\). Тогда продолжая оценку, найдём значение интеграла
+\(\int\limits_{C_R^+}|e^{i \alpha z}| \, |dz| = \int\limits_0^\pi |e^{i \alpha R e^{it}}| \cdot 
+|iRe^{it}| \, dt = R\int\limits_0^\pi |e^{i \alpha R (\cos{t} + i \sin{t})}| \, dt = R
+\int\limits_0^\pi e^{- \alpha R \sin{t}}\). Для дальнейших оценок воспользуемся следующим: функция
+\(\sin{t}\) симметрична относительно \(\dfrac{\pi}{2}\), а также на отрезке \([0, \dfrac{\pi}{2}]\)
+выполняется неравенство \(\sin{t} \ge \dfrac{2}{\pi}t\). Получим, что \(R \int\limits_0^\pi 
+e^{- \alpha R \sin{t}} \le 2R \int\limits_0^{\frac{\pi}{2}}e^{-\alpha R \frac{2}{\pi} t} \, dt = 
+\dfrac{\pi}{\alpha}\). Таким образом \(|I(R)| \le M(R) \cdot \dfrac{\pi}{\alpha} \to 0\) при 
+\(R \to \infty\), а значит верно и требуемое выражение.
+\end{proof}
+
+\begin{note} \label{25:alt_lemma_Jordan}
+Сформулируем аналогичную лемму для обратной области:
+
+\noindent
+\begin{minipage}[c]{0.4\textwidth}
+\centering
+\begin{tikzpicture}[
+    axis/.style={draw=black, thick, -{Stealth[scale=1.2]}},
+    contour/.style={draw=black, thick}
+]
+
+    % 1. Штриховка над горизонтальной осью (верхняя полуплоскость исключена)
+    \fill[pattern=north east lines, pattern color=black!80] (-3.5, 0) rectangle (3.5, 0.35);
+
+    % 2. Координатные оси
+    \draw[axis] (-3.7, 0) -- (3.8, 0);
+    \draw[axis] (0, -3.6) -- (0, 1.6);
+
+    % 3. Внутренний заштрихованный полукруг в нижней полуплоскости (радиус R_0)
+    \filldraw[contour, pattern=north west lines, pattern color=black!80] 
+        (1.3, 0) arc (0:-180:1.3cm) -- cycle;
+
+    % 4. Внешняя полуокружность C_R^- (радиус R)
+    \draw[contour] (2.6, 0) arc (0:-180:2.6cm);
+
+    % 5. Подписи на чертеже (размещены в свободной области снизу для читаемости)
+    \node[below left] at (-2.6, 0) {$-R$};
+    \node[below right] at (1.3, 0) {$R_0$};
+    \node[right] at (2.4, -1.3) {$C_R^-$};
+
+\end{tikzpicture}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.52\textwidth}
+Пусть
+\begin{enumerate}[wide=20pt, label=\arabic*., itemsep=0ex]
+\item \(G = \{z \colon |z| \ge R_0 > 0; \im{z} \le 0\}\)
+\item \(f(z) \in C(\overline{G})\);
+\item \(\max\limits_{z \in C_R^-} |f(z)| = M(R) \to 0\) при \(R \to +\infty\);
+\item \(\alpha < 0\).
+\end{enumerate}
+
+Тогда
+\begin{equation}
+    \int\limits_{C_R^-} f(z)e^{i\alpha z} \, dz \to 0, \text{ при } R \to \infty
+\end{equation}
+\end{minipage}
+\end{note}
+
+\begin{statement}
+Пусть:
+\begin{enumerate}[wide=20pt, label=\arabic*., itemsep=0ex]
+\item \(P(z), Q(z)\)~--- многочлены, не имеющие общих корней;
+\item \(Q(z)\) не имеет вещественных корней;
+\item \(\deg{Q(z)} > \deg{P(z)}\);
+\item \(\alpha > 0\), \(\beta \in \R\).
+\end{enumerate}
+
+Тогда
+\begin{equation} \label{25_eq:int_f_exp_up}
+    I = \int\limits_{-\infty}^{+\infty} \dfrac{P(x)}{Q(x)} e^{i (\alpha x + \beta)} \, dx = 2 \pi i 
+    \sum\limits_k \res\limits_{z = z_k} \dfrac{P(z)}{Q(z)} e^{i (\alpha x + \beta)},
+\end{equation}
+где \(z_k\)~--- нули \(Q(z)\) в верхней полуплоскости. 
+\end{statement}
+
+\begin{proof}
+Проверим, что для \(f(z) = \dfrac{P(x)}{Q(x)} e^{i (\alpha x + \beta)}\) справедлива лемма 
+\ref{25:lemma_plus}. Докажем, что к \(f(z)\) применима лемма Жордана (\ref{25:lemma_Jordan}). Имеем,
+что \(\exists \lim\limits_{z \to \infty} 
+\dfrac{P(z)\cdot z}{Q(z)} = A \ne \infty\), а значит \(\exists \lim\limits_{z \to \infty} 
+\left|\dfrac{P(z)\cdot z}{Q(z)}\right| = |A|\). Тогда \(\exists R_0 > 0 \colon \forall z \colon 
+|z| > R_0 \to \left|\dfrac{P(z)\cdot z}{Q(z)}\right| \le |A| + 1\), то есть 
+\(\left|\dfrac{P(z)}{Q(z)}\right| \le \dfrac{|A| + 1}{|z|}\). Теперь оценим максимум модуля функции 
+\(\dfrac{P(z)}{Q(z)} e^{i \beta}\): \(\left|\dfrac{P(z)}{Q(z)} e^{i \beta}\right| \le 
+\dfrac{|A| + 1}{|z|}\), а значит и \(\max\limits_{z \in C_R^+} \left|\dfrac{P(z)}{Q(z)} 
+e^{i \beta}\right| \le \dfrac{|A| + 1}{|z|} \to 0\) при \(R \to \infty\).
+Получили, что для этой функции применима лемма Жордана(\ref{25:lemma_Jordan}), а значит применима и
+лемма \ref{25:lemma_plus}.
+\end{proof}
+
+\begin{note}
+Применяя вариант леммы Жорадана для нижней полуплоскости из замечания \ref{25:alt_lemma_Jordan}
+можно получить:
+
+\begin{equation} \label{25_eq:int_f_exp_down}
+    I = \int\limits_{-\infty}^{+\infty} \dfrac{P(x)}{Q(x)} e^{i (\alpha x + \beta)} \, dx = -2 \pi i 
+    \sum\limits_k \res\limits_{z = z_k} \dfrac{P(z)}{Q(z)} e^{i (\alpha x + \beta)},
+\end{equation}
+где \(z_k\)~--- нули \(Q(z)\) в нижней полуплоскости. 
+\end{note}
+
+\begin{note}
+Если для \(x \in \R\) верно, что \(\dfrac{P(x)}{Q(x)} \in \R\), то отделяя в 
+\eqref{25_eq:int_f_exp_up} и \eqref{25_eq:int_f_exp_down} вещественную и мнимую части получим
+побочные результаты:
+\[
+    \re I = \int\limits_{-\infty}^{+\infty} \dfrac{P(x)}{Q(x)} \cos{(\alpha x + \beta)} \, dx,
+\]
+\[
+    \im I = \int\limits_{-\infty}^{+\infty} \dfrac{P(x)}{Q(x)} \sin{(\alpha x + \beta)} \, dx
+\]
+\end{note}
+
+
+\Section{Приращение аргумента вдоль кривой}
+
+\begin{statement}
+Пусть \(z(t)\)~--- \(C^1\)-кривая, где \(t \in [t_0, t_1]\), при этом для любого \(t\) из этого
+отрезка \(z(t) \ne 0\). Пусть \(z_0 = z(t_0)\), \(z_1 = z(t_1)\) и \(\phi_0\)~--- одно из значений
+угла \(\cos{\phi_0} = \dfrac{x_0}{|z_0|}\), \(\sin{\phi_0} = \dfrac{y_0}{|z_0|}\) (т. е. \(\phi_0 
+\in \mathrm{Arg}(z_0))\). Тогда существует и единственна функция \(\phi(t) \in C^1[t_0, t_1]\)
+такая, что для любого \(t \in [t_0, t_1]\) верно
+
+\begin{equation}
+    \cos{\phi(t)} \equiv \dfrac{x(t)}{|z(t)|}, \,
+    \sin{\phi(t)} \equiv \dfrac{y(t)}{|z(t)|},
+\end{equation}
+причём
+\begin{equation} \label{26_eq:arg_int}
+    \phi(t) = \phi_0 + \int\limits_{t_0}^t \dfrac{y'(\tau)x(\tau) - x'(\tau)y(\tau)}{x(\tau)^2 + 
+    y(\tau)^2} \, d\tau
+\end{equation}
+\end{statement}
+
+\begin{proof}
+Введём обозначения: \(\cos{\phi(t)} = u(t), \dfrac{x(t)}{|z(t)|} = \tilde{u}(t)\); \(\sin{\phi(t)} =
+v(t), \dfrac{y(t)}{|z(t)|} = \tilde{v}(t)\); \(\dfrac{y'(\tau)x(\tau) - x'(\tau)y(\tau)}{x(\tau)^2 + 
+y(\tau)^2} = a(\tau)\), при этом \(\phi'(\tau) = a(\tau)\) из дифференцирования 
+\eqref{26_eq:arg_int}. Продифференцируем \(u(t), v(t)\):
+
+\[u'(t) = -(\sin{\phi(t)}) \cdot \phi'(t) = -v(t)\cdot a(t),\]
+\[v'(t) = \cos{\phi(t)} \cdot \phi'(t) = u(t) v(t).\]
+
+Итак, пара \(u(t), v(t)\) удовлетворяет системе линейных обыкновенных дифференциальных уравнений:
+\begin{equation}
+\begin{cases}
+    u'(t) = -a(t) \cdot v(t) \\
+    v'(t) =  a(t) \cdot u(t)
+\end{cases}
+\end{equation}
+
+Теперь продифференцируем \(\tilde{v}(t)\): \(\tilde{v}'(t) = \dfrac{y'(t)}{|z(t)|} - y(t)\dfrac{1}
+{|z(t)|^2}\cdot |z(t)|' = \dfrac{y'}{|z|} - \dfrac{y(xx' + yy')}{|z|^3} = \dfrac{x}{|z|} \cdot 
+\dfrac{y'x - xy'}{|z|^2} = \tilde{u}(t) \cdot a(t)\). Аналогично доказывается \(\tilde{u}'(t) = 
+-\tilde{v}(t) \cdot a(t)\).
+\end{proof}
