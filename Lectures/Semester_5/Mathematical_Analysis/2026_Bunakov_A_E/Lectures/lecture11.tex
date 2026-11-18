@@ -1,0 +1,213 @@
+Тогда из системы линейных дифференциальных уравнений и начальных условий \(u(t_0) = \tilde{u}(t_0)
+\), \(u(t_0) = \tilde{u}(t_0)\) и непрерывности \(a(t)\) на отрезке \([t_0; t_1]\) следует что 
+решения систем \(u(t), v(t)\) и \(\tilde{u}(t), \tilde{v}(t)\) тождественно совпадают.
+
+Единственность \(\phi(t)\) доказывается \textit{от противного.} Пусть существует 
+непрерывно-дифференцируемые на отрезке \([t_0; t_1]\) функции \(\phi(t)\) и \(\psi(t)\), при этом
+\(\phi(t_0) = \psi(t_0)\), \(\cos{\phi(t)} \equiv \cos{\psi(t)}\) и \(\sin{\phi(t)} \equiv 
+\sin{\psi(t)}\). Тогда, применяя дифференцирование, получим, что \(- \phi'(t) \sin{\phi(t)} \equiv -
+\psi'(t) \sin{\psi(t)}\) и \(\phi'(t) \cos{\phi(t)} \equiv \psi'(t) \cos{\psi(t)}\). Существуют 
+отрезки, на которых либо синус либо косинус отличны от нуля. Решая дифференциальное уравнения и 
+сшивая полученные решения получим тождественное совпадение функций \(\phi(t)\) и \(\psi(t)\).
+\end{proof}
+
+\begin{definition}
+Приращением аргумента вдоль кривой \(\gamma\) будем называть \(\darg{\gamma}{z} = \phi(t_1) - 
+\phi(t_0) = \int\limits_{t_0}^{t_1} \dfrac{y'x - x'y}{x^2 + y^2} \, dt\).
+\end{definition}
+
+\begin{statement}
+\(\darg{\gamma}{z} = \im \int\limits_{\gamma_1} \dfrac{dz}{z}\).
+\end{statement}
+
+\begin{proof}
+Заметим, что \(\dfrac{z'}{z} = \dfrac{x' + iy'}{z+iy} = \dfrac{(x'+iy')(x - iy)}{(x+iy)(x-iy)} = 
+\dfrac{x'x + y'y}{x^2 + y^2} + i\dfrac{y'x - x'y}{x^2 + y^2}\), то есть подынтегральное выражение
+в определении приращения аргумента вдоль кривой представляет собой мнимую часть функции 
+\(\dfrac{z'}{z}\).
+
+Тогда \(\darg{\gamma}{z} = \int\limits_{t_0}^{t_1} \im{\dfrac{z'}{z}} \, dt = \im 
+\int\limits_{t_0}^{t_1} \dfrac{z'}{z} \, dt = \im \int\limits_{\gamma_1} \dfrac{dz}{z}\).
+\end{proof}
+
+\begin{definition}
+Пусть \(\gamma\)~--- непрерывно дифференцируемая кривая, а \(w = f(z)\) регулярна на \(\gamma\).
+Тогда \(\Gamma = f(\gamma)\) тоже непрерывно дифференцируемая кривая. Приращением аргумента функции
+\(f(z)\) по кривой \(\gamma\) назовём \(\darg{\gamma}{f(z)} = \darg{\Gamma}{w} = \im \int\limits_
+\Gamma \dfrac{dw}{w} = \im \int\limits_\gamma \dfrac{f'(z)}{f(z)} \, dz\). В данном определении
+важно, чтобы \(\Gamma\) не проходила через ноль.
+\end{definition}
+
+\begin{note} \leavevmode
+\begin{enumerate}[wide=20pt, label=\asbuk*., itemsep=0ex]
+\item Если \(\gamma = \gamma_1 \dots \gamma_n\)~--- КНД кривая, непроходящая через ноль, состоящая
+    \(\gamma_1, \dots, \gamma_n\)~--- КНД кривых то \(\darg{\gamma}{f(z)} = \sum\limits_{k = 1}^n
+    \darg{\gamma_k}{f(z)}\). Тогда \(\darg{\gamma}{f(z)} = \im \int\limits_{\gamma} 
+    \dfrac{f'(z)}{f(z)} \, dz\) остаётся верным для КНД кривых.
+\item Пусть \(G\)~--- ограниченная ОСПГ, причём \(\partial G = \gamma_1 \cup \dots \cup \gamma_n\).
+    Тогда считаем по определению, что \(\darg{\partial G}{f(z)} = \sum\limits_{k = 1}^n
+    \darg{\gamma_k}{f(z)}\).
+\end{enumerate}
+\end{note}
+
+\begin{statement}
+\textbf{(Логарифмическое тождество).} Пусть \(\gamma\)~--- КНД кривая, \(f_1(z), f_2(z)\) регулярны
+на \(\gamma\), при этом \(\forall z \in \gamma \colon f_1(z) \ne 0, f_2(z) \ne 0\). Тогда:
+\begin{enumerate}[wide=20pt, label=\Roman*., itemsep=0ex]
+\item \(\darg{\gamma}{f_1f_2} = \darg{\gamma}{f_1} + \darg{\gamma}{f_2}\);
+\item \(\darg{\gamma}{\dfrac{f_1}{f_2}} = \darg{\gamma}{f_1} - \darg{\gamma}{f_2}\).
+\end{enumerate}
+\end{statement}
+
+\begin{proof}
+Докажем первое утверждение, второе доказывается аналогично. 
+
+\(\darg{\gamma}{f_1f_2} = \im 
+\int\limits_\gamma \dfrac{(f_1f_2)'}{f_1f_2} \, dz= \im \int\limits_\gamma (\dfrac{f_1'}{f_1} + 
+\dfrac{f_2'}{f_2}) \, dz = \im \int\limits_\gamma \dfrac{f_1'}{f_1}\, dz + \im \int\limits_\gamma
+\dfrac{f_2'}{f_2} \, dz = \darg{\gamma}{f_1} + \darg{\gamma}{f_2}\).
+\end{proof}
+
+
+\Section{Принцип аргумента. Теорема Руше}
+
+\begin{statement}\label{27:principe_of_argument}
+\textbf{(Принцип аргумента).} Пусть выполняется:
+\begin{enumerate}[wide=20pt, itemsep=0ex]
+\item \(G\)~--- ограниченная ОСПГ;
+\item \(f(z)\) регулярна в \(\overline{G}\) за исключением, быть может, полюсов;
+\item \(\forall z \in \partial G \colon f(z) \ne 0\).
+\end{enumerate}
+Тогда:
+\begin{enumerate}[wide=20pt, itemsep=0ex]
+\item \(f(z)\) имеет в \(G\) конечное число полюсов и конечное число нулей; 
+\item \(\darg{\partial G}{f(z)} = 2\pi(N-P)\), где \(N\)~--- число нулей с учётом их порядка, 
+    \(P\)~--- число полюсов с учётом их порядка.
+\end{enumerate}
+\end{statement}
+
+\begin{proof}
+\begin{enumerate}[wide=20pt, itemsep=0ex]
+\item Пусть полюсов бесконечно много. Тогда, так как \(\overline{G}\)~--- компакт, то \(\exists z^*
+    \in \overline{G}\)~--- предельная точка полюсов. Но \(z^*\) не может лежать в \(\overline{G}\),
+    так как она является неизолированной особой точкой, а значит \(f(z)\) не регулярна в ней.
+
+    Пусть нулей бесконечно много. Тогда аналогично существует \(z^{**} \in \overline{G}\)~--- 
+    предельная точка нулей. В силу условия 3) не может лежать на границе, тогда \(z^{**} \in G\).
+    Тогда рассмотрим \(D = G \setminus \{\text{полюса}\}\). Тогда \(z^{**} \in D\) и по теореме
+    единственности \(f(z) \equiv 0\) в \(D\), а значит, по непрерывности \(f(z) \equiv 0\) в \(
+    \partial G\). Это также противоречит условию 3).
+\item Пусть \(F(z) = \dfrac{f'(z)}{f(z)}\). Рассмотрим \(\int\limits_{\partial G} 
+    \dfrac{f'(z)}{f(z)} \, dz = \int\limits_{\partial G} f(z) \, dz = 2 \pi i (\sum 
+    \res\limits_{\text{нули \(f\)}} F(z) + \sum \res\limits_{\text{полюса \(f\)}} F(z))\).
+
+    Обозначим нули \(f\) как \(a_1, \dots, a_k\), их поряки как \(n_1, \dots, n_k\) соответственно.
+    Тогда \(\sum\limits_{l = 1}^n n_l = N\). В окрестности нуля \(a_l\) \(f(z) = (z - a_l)^{n_l} 
+    \cdot g_l(z)\), при этом \(g_l(z)\) регулярна в \(a_l\) и \(g_l(a_l) \ne 0\). Тогда \(f'(z) = 
+    n_l(z-a_l)^{n_l - 1} \cdot g_l(z) + (z - a_l)^{n_l} \cdot g_l'(z)\) и \(F = \dfrac{n_l}{z-a_l}
+    + \dfrac{g'(z)}{g(z)}\), а значит \(\res\limits_{z = a_l} F(z) = \res\limits_{z = a_l} 
+    \dfrac{n_l}{z - a_l} + \res\limits_{z = a_l} \dfrac{g'(z)}{g(z)} = n_l\). Второе слагаемое равно
+    нулю, так как вычет регулярной функции равен нулю.
+
+    Обозначим полюса \(f\) как \(b_1, \dots, b_s\) и их порядки как \(p_1, \dots, p_s\). В
+    проколотой окрестности \(\mathring{B}(b_l)\) \(f(z) = (z - b_l)^{-p_l} h(z)\), где \(h(z)\)
+    регулярна в \(B(b_l)\), а значит \(F(z) = \dfrac{-p_l}{z - b_l} + \dfrac{h'(z)}{h(z)}\).
+    Тогда \(\res\limits_{z = b_l} F(z) = -p_l\).
+
+    По теореме Коши о вычетах \(\int\limits_{\partial G} = 2 \pi i \sum \res F(z) = 2\pi i (N-P)\),
+    а значит \(\darg{\partial G} f(z) = 2 \pi (N - P)\).
+\end{enumerate}
+\end{proof}
+
+\begin{statement} \label{27:th_rusche}
+\textbf{(Теорема Руше).} Пусть выполняется:
+\begin{enumerate}[wide=20pt, itemsep=0ex]
+\item \(G\)~--- ограниченная ОСПГ;
+\item \(f(z), g(z)\) регулярны в \(\overline{G}\);
+\item \(\forall z \in \partial G \colon |f(z)| < |g(z)|\).
+\end{enumerate}
+Тогда:
+\begin{enumerate}[wide=20pt, itemsep=0ex]
+\item \(f(z)\) и \(f(z) + g(z)\) не имеют нулей на границе \(G\); 
+\item В \(G\) \(f(z)\) и \(f(z) + g(z)\) имеют одинаковое число нулей с учётом их порядка.
+\end{enumerate}
+\end{statement}
+
+\begin{proof}
+\begin{enumerate}[wide=20pt, itemsep=0ex]
+\item Пусть найдётся такое \(z_0 \in \partial G\), что \(f(z_0) = 0\). Тогда \(|g(z_0)| < |f(z_0)| =
+    0\)~--- противоречие (модуль комплексного числа~--- неотрицательная функция). Пусть найдётся
+    такое \(z_1 \in \partial G\), что \(f(z_1) + g(z_1) = 0\). Тогда \(f(z_1) = -g(z_1)\) и 
+    \(|f(z_1)| = |g(z_1)|\)~--- противоречие с условием 3).
+\item Пусть \(N_{f+g}\)~--- число нулей \(f+g\) в \(G\), \(N_f\)~--- число нулей \(f\) в \(G\).
+    \begin{equation} \label{27_eq:darg_for_rusche}
+    \darg{\partial G}{(f+g)} = \darg{\partial G}{f\left(1 + \dfrac{g}{f}\right)} = 
+    \darg{\partial G}{f} + \darg{\partial G}{\left(1 + \dfrac{g}{f}\right)}. \tag{1}
+    \end{equation}
+
+    По принципу аргумента (утверждение 
+    \ref{27:principe_of_argument}) \(\darg{\partial G}{(f+g)} = 2\pi N_{f+g}\), \(\darg{\partial G}{f}
+    = 2 \pi N_f\). Пусть \(\partial G = \gamma_1 \cup \dots \cup \gamma_m\). Тогда \(\darg{\partial
+    G}{\left(1 + \dfrac{g}{f}\right)} = \sum\limits_{k = 1}^m \darg{\gamma_k}{\left(1 + \dfrac{g}{f}
+    \right)}\). Обозначив \(w = h(z) = \left(1 + \dfrac{g}{f}\right)\), \(\Gamma_k = h(\gamma_k)\),
+    получим: \(\darg{\partial G}{\left(1 + \dfrac{g}{f}\right)} = \sum\limits_{k = 1}^m 
+    \darg{\Gamma_k}{w}\). При этом \(|w - 1| = \left(\dfrac{g(z)}{f(z)}\right) < 1\). Так как все
+    контура находятся в этой области (\(|w - 1| < 1\)), то \(I = \int\limits_{\Gamma_k}
+    \dfrac{dw}{w} = 0\) в следствие регулярности подынтегральной функции в указанной области, а
+    значит и \(\darg{\partial G}{\left(1 + \dfrac{g}{f}\right)} = \im I = 0\). Тогда
+    \eqref{27_eq:darg_for_rusche} переписывается в виде \(2 \pi N_{f+g} = 2\pi N_f + 0\), откуда
+    вытекает доказываемое равенство.
+\end{enumerate}
+\end{proof}
+
+\begin{statement}
+\textbf{(Основная теорема алгебры).} Любой многочлен \(P(z)\) степени \(n \ge 1\) с комплексными
+коэффициентами имеет в комплексной плоскости ровно \(n\) корней с учётом их кратности.
+\end{statement}
+
+\begin{proof}
+Представим многочлен в виде \(P(z) = z^n + a_{n-1}z^{n-1} + \dots + a_1 z + a_0\). Пусть \(R >
+\max \{1, \sum\limits_{k=0}^{n-1}\}\). Применим теорему Руше (утверждение \ref{27:th_rusche}) для
+\(G = \{|z| < R\}\), \(f = z^n\). На границе \(G\), то есть \(|z| = R\) верно \(|g(z)| \le |a_{n-1}|
+|z^{n-1}| + \dots + |a_1||z| + |a_0| < |a_{n-1}| R^{n-1} + \dots + |a_0| \le R^{n-1}(|a_{n-1}| + 
+\dots + |a_0|) < R^n = |f(z)|\). Тогда количество корней \(P(z) = 0\) совпадает с количеством корней
+\(z^n = 0\) в \(G\), то есть равно \(n\). 
+\end{proof}
+
+\begin{note}
+Помимо основного утверждения доказано, что все нули многочлена лежат в круге \(|z| \le \max\{1, 
+\sum\limits_{k=0}^{n-1}\}\).
+\end{note}
+
+
+\Section{Целые функции. Теорема Лиувилля}
+
+\begin{definition}
+Функция \(f(z)\) называется целой, если \(f(z)\) регулярна в \(\Co\). Из этого следует, что ряд
+\(f(z) = \sum\limits_{k = 0}^\infty c_k z^k\) имеет радиус сходимости \(R = \infty\), то есть
+равенство справедливо во всей комплексной плоскости.
+\end{definition}
+
+\begin{statement}\label{28:entire_func_is_polynom}
+Пусть \(f(z)\)~--- целая и \(\exists R_0 > 0, C > 0, m \in \N_0\) (\(\N_0\)~--- множество
+натуральных чисел, включающее в себя нуль) такие, что для \(z\colon |z| \ge R_0\) выполняется
+\(|f(z)| \le C|z|^m\). Тогда \(f(z)\)~--- многочлен степени \(m\) или меньше.
+\end{statement}
+
+\begin{proof}
+Для коэффициентов ряда Лорана верно неравенство Коши \eqref{22:cauchy_unequality}: \(|c_n| \le 
+\dfrac{M(R)}{R^n}\), где \(M(R) = \max\limits_{|z| = R}|f(z)|\). Пусть \(R > R_0\) и \(n > m\).
+Тогда \(|c_n| \le \dfrac{C R^m}{R^n} \rightarrow 0\) при \(R \to \infty\), а значит \(\forall n > m
+\) \(|c_n| \le 0\), то есть \(c_n = 0\).
+\end{proof}
+
+\begin{corollary}
+\textbf{(Теорема Лиувилля).} Пусть \(f(z)\) целая и ограниченная в \(\mathring{B}_R(\infty)\). Тогда
+\(f(z) \equiv \mathrm{const}\).
+\end{corollary}
+
+\begin{proof}
+Из условий получаем, что \(\exists R_0 = R > 0, C > 0, m = 0\), такие, что для любого \(z \colon
+|z| \ge R_0\) выполняется \(|f(z)| \le C\). В силу \ref{28:entire_func_is_polynom} получим, что
+\(f(z)\)~--- многочлен степени не больше нуля, то есть константа.
+\end{proof}
